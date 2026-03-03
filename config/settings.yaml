@@ -1,0 +1,46 @@
+# LLM Configuration
+llm:
+  provider: "openai"  # openai, azure, ollama, deepseek
+  model: "gpt-4o"
+  temperature: 0.0
+  max_tokens: 4096
+  api_key: ""  # Set via environment variable
+  azure_endpoint: ""  # For Azure
+
+# Embedding Configuration
+embedding:
+  provider: "openai"  # openai, azure, ollama
+  model: "text-embedding-ada-002"
+  dimensions: 1536
+  api_key: ""  # Set via environment variable
+  azure_endpoint: ""  # For Azure
+
+# Vector Store Configuration
+vector_store:
+  provider: "chroma"  # chroma, qdrant, milvus
+  persist_directory: "./data/db/chroma"
+  collection_name: "knowledge_hub"
+
+# Retrieval Configuration
+retrieval:
+  dense_top_k: 20
+  sparse_top_k: 20
+  fusion_top_k: 10
+  rrf_k: 60
+
+# Rerank Configuration
+rerank:
+  enabled: false
+  provider: "none"  # none, llm, cross-encoder
+
+# Ingestion Configuration
+ingestion:
+  chunk_size: 1000
+  chunk_overlap: 200
+  splitter: "recursive"  # recursive, semantic
+
+# Observability Configuration
+observability:
+  log_level: "INFO"
+  trace_enabled: true
+  trace_file: "./logs/traces.jsonl"
